@@ -1,0 +1,60 @@
+<% content_for :javascripts do %>
+<script type='text/javascript'>
+  var swfu;
+
+  window.onload = function () {
+    swfu = new SWFUpload({
+      upload_url : '<%= new_photo_path_with_session_information %>',
+      flash_url : '/flash/swfupload.swf',
+			preserve_relative_urls : true,
+
+			// Button settings
+			button_image_url: "/flash/upload_photos.png",	// Relative to the Flash file
+			button_width: "95",
+			button_height: "22",
+			button_placeholder_id: "spanButtonPlaceHolder",
+			// button_text: '<span class="theFont">Browse</span>',
+			// button_text_style: ".theFont { font-size: 16; }",
+			// button_text_left_padding: 12,
+			// button_text_top_padding: 3,
+
+      file_size_limit : '10000',
+      file_types : '*.jpg',
+      file_types_description : 'JPG Images',
+      file_upload_limit : '0',
+			custom_settings : {
+				progressTarget : "fsUploadProgress"
+			},
+
+      file_queue_error_handler : fileQueueError,
+      file_dialog_complete_handler : fileDialogComplete,
+      upload_progress_handler : uploadProgress,
+      upload_error_handler : uploadError,
+      upload_success_handler : uploadSuccess,
+      upload_complete_handler : uploadComplete,
+
+			post_params : {
+				authenticity_token : '<%= u form_authenticity_token -%>',
+				parent : '<%= parent.class.to_s.downcase %>'
+				<% unless parent.new_record? %>
+					,<%= parent.class.to_s.downcase %>_id : <%= parent.id %>
+				<% end %>
+			},
+
+      custom_settings : { 
+        upload_target : 'divFileProgressContainer'
+      },
+
+      debug: false
+
+    });
+  };
+</script>
+<% end %>
+
+<% form_for [:admin, Photo.new], :html => { :class => "form" } do |f| %>
+	<div class="group">
+		<label class="label">Photos</label>
+		<span id="spanButtonPlaceHolder"></span>
+	</div>
+<% end %>

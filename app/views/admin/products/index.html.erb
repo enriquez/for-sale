@@ -1,0 +1,38 @@
+<% main_block("Products", navigation_items, 0) do %>
+
+	<% if @products.size > 0 %>
+
+	<table class="table">
+	
+		<tr>
+			<th class="first">ID</th>
+			<th>Title</th>
+			<th>Price</th>
+			<th>Description</th>
+			<th class="last">&nbsp;</th>
+		</tr>
+	
+		<% @products.each do |product| %>
+		<tr>
+			<td><%= product.id.to_s %></td>
+			<td><%= product.title %></td>
+			<td><%= number_to_currency product.price %></td>
+			<td><%= product.description %></td>
+			<td class="last">
+				<%= link_to 'Details', admin_product_path(product) %> | 
+				<%= link_to 'Edit', edit_admin_product_path(product) %> | 
+				<%= link_to 'Delete', admin_product_path(product), :confirm => "Are you sure?", :method => :delete %>
+			</td>
+		</tr>
+		<% end %>
+	
+	</table>
+
+	<% else %>
+
+	<p>There are no products. <%= link_to "Click here to create one", new_admin_product_path %>.</p>
+
+	<% end %>
+
+<% end %>
+

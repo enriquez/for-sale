@@ -1,0 +1,25 @@
+.columns .left {
+	float: left;
+}
+.columns .right {
+	float: right;
+}
+.columns .column {
+	width: 48%;
+}
+.stats ol {
+	padding-left: 20px;
+}
+.stats ul li {
+	list-style-type: none;
+}
+.stats {
+/*	font-size: 1.25em;*/
+}
+.stats strong {
+	font-size: 1.3em;
+}
+#visits-chart {
+	width: 100%;
+	height: 250px;
+}

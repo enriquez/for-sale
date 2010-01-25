@@ -1,0 +1,21 @@
+<div id="content" class="body">
+<% for product in @products do %>
+  <div id="product_<%= product.id %>" class="product">
+    <ul class="photos">
+    <% for photo in product.photos do %>
+      <li<%= " class=\"active-photo\"" if photo == product.photos.first %>><%= image_tag photo.file(:thumb) %></li>
+    <% end %>
+    </ul>
+    <div class="pager">
+      <img src="/images/left-arrow.png" alt="Left Arrow" id="product_<%= product.id %>_left-arrow" class="left-arrow arrow"/>
+      <div class="dots">
+        <div id="product_<%= product.id %>_dot_0" class="dot first-dot active-dot">&nbsp;</div>
+      </div>
+      <img src="/images/right-arrow.png" alt="Right Arrow" id="product_<%= product.id %>_right-arrow" class="right-arrow arrow"/>
+    </div>
+    <p class="caption center-text">
+      <%= link_to product.title, product_path(product) %> <%= number_to_currency product.price %>
+    </p>
+  </div>
+<% end %>
+</div>

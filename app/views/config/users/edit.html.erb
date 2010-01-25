@@ -1,0 +1,9 @@
+<% main_block("Edit a User", navigation_items) do %>
+
+<% form_for [:config, @user], :html => { :class => "form", :autocomplete => "off" } do |user| %>
+	<%= validation_error_flash @user %>
+	<%= render :partial => 'form', :locals => { :user => user } %>
+	<%= form_button user, :button_text => "Update", :cancel_path => config_users_path %>
+<% end %>
+
+<% end %>

@@ -1,0 +1,4 @@
+<% main_block "Photos", photo_items(@parent), 1, false do %>
+	<%= render :partial => "admin/photos/form", :locals => { :parent => @parent } %>
+	<%= render :partial => "admin/photos/thumbnails" %>
+<% end %>

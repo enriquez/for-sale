@@ -1,0 +1,61 @@
+h1. For Sale
+
+Web app for posting things you want to sell.  Buyers contact you by filling out a contact form which sends you an email.  See "http://moving.enriquez.me":http://moving.enriquez.me for an example.
+
+h2. Initial Setup
+
+h3. Database and App config files
+
+Copy and modify configuration files
+<pre><code>
+cp config/app_config.example.yml config/app_config.yml
+cp config/database.example.yml config/datbase.yml
+</code></pre>
+
+h3. Setting APP_CONFIG variables
+
+These can be set in config/app_config.yml or using your system's environment variables. If deploying to Heroku, they can be set using "config vars":http://docs.heroku.com/config-vars.
+
+*  *config_login*. Username for /config area.
+*  *config_password*. Password for /config area.
+*  *domain*. Full domain of the app. ex: domain.com
+*  *gmail_domain*. Gmail domain for email smtp. ex: domain.com
+*  *gmail_username*. Gmail username. ex: username@domain.com
+*  *gmail_password*. Gmail password.
+*  *email_recipient*. Email address to receive website inqueries.
+*  *access_key_id*. Amazon S3 access key id.
+*  *secret_access_key*. Amazon S3 secret access key.
+*  *s3_bucket*. Amazon S3 bucket name. Leave blank to store photos on the filesystem.
+
+h2. User's Guide
+
+h3. Config area
+
+Visit /config and log in to create users.  The users can now login at /admin
+
+h3. Admin area
+
+Click on "Create a Product" and fill out the form.  Once it is created go to it's "Details", and you can upload photos for that product.
+
+h2. License
+
+Copyright (c) 2010 Mike Enriquez
+ 
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+ 
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+ 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+

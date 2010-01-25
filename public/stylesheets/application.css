@@ -1,0 +1,156 @@
+html {
+  background: #f4f4f4;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #747474;
+}
+h1 {
+  font-size: 2em;
+  margin-bottom: -10px;
+}
+h2 {
+  color: white;
+  font-size: 1.75em;
+}
+.body {
+  clear: both;
+  width: 900px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+#title img {
+  display: block;
+  margin: 20px auto;
+}
+#footer {
+  background-color: #222;
+  border-top: 5px solid #000;
+  color: #CCC;
+  margin-top: 40px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+#directions {
+  width: 460px;
+  float: left;
+}
+#directions p {
+  line-height: 2;
+}
+.center-text {
+  text-align: center;
+}
+.product {
+  background: url(/images/box.png);
+  display: block;
+  width: 255px;
+  height: 255px;
+  padding: 20px;
+  float: left;
+}
+ul.photos {
+  width: 248px;
+  height: 186px;
+  margin: 3px auto;
+  overflow: hidden;
+}
+ul.photos li {
+  text-align: center;
+}
+ul.medium-photos {
+  margin-top: 10px;
+  float: left;
+}
+#content {
+  margin-top: 30px;
+}
+.arrow {
+  cursor: pointer;
+}
+.left-arrow {
+  float: left;
+}
+.right-arrow {
+  float: right;
+}
+.pager {
+  clear: both;
+  width: 248px;
+  height: 15px;
+  padding: 4px;
+}
+.dots {
+  padding: 4px 0;
+  float: left;
+  width: 220px;
+}
+.dot {
+  display: block;
+  float: left;
+  background: url(/images/dots.png) 0 7px;
+  height: 7px;
+  width: 8px;
+  margin: 0 1px;
+}
+.active-dot {
+  background-position: 0 0;
+}
+.product .caption {
+  border-top: 1px solid #c4c4c4;
+  padding: 14px 0;
+  margin-top: 3px;
+}
+.show .product .photos li {
+  cursor: pointer;
+}
+.show .product {
+  float: right;
+}
+.medium-photos li {
+  width: 600px;
+  height: 450px;
+  line-height: 450px;
+  text-align: center;
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.medium-photos li img {
+  margin: 0 auto;
+  vertical-align: middle;
+}
+form {
+  float: right;
+  width: 400px;
+}
+form p {
+  margin: 10px 0;
+}
+form p label {
+  float: left;
+  display: inline-block;
+  width: 90px;
+}
+.button input {
+  margin-left: 90px;
+  border: 1px solid black;
+  padding: 5px;
+}
+input, textarea {
+  width: 278px;
+}
+#flash-notice {
+  width: 80%;
+  padding: 10px;
+  text-align: center;
+  margin: 10px auto;
+  border: 1px solid #E2C822;
+  background-color: #FFF9D7;
+}
+#flash-error {
+  width: 80%;
+  padding: 10px;
+  text-align: center;
+  margin: 10px auto;
+  border: 1px solid #e22222;
+  background-color: #ffd7d7;
+}

@@ -1,0 +1,11 @@
+<% main_block "Update a Photo", photo_items(@parent) do %>
+
+	<%= image_tag @photo.file.url(:medium) %>
+
+	<% form_for [:admin, @parent, @photo], :html => { :class => "form" } do |photo| %>
+		<%= validation_error_flash @photo %>
+		<%= form_field_group photo, :description %>
+		<%= form_button photo, :button_text => "Update", :cancel_path => polymorphic_path([:admin, @parent]) %>
+	<% end %>
+
+<% end %>

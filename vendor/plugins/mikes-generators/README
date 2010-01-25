@@ -1,0 +1,41 @@
+MikesGenerators
+===============
+
+This plugin overrides the default Rails controller and model generators to better suit my needs.
+
+Installation
+============
+
+./script/plugin install git://github.com/enriquez/mikes-generators.git
+
+Example
+=======
+
+This plugin adds a -b option to the controller generator to create a base controller when the controller is nested:
+./script/generate controller admin/articles -b
+
+This command generates the controllers:
+class Admin::BaseController < ApplicationController
+end
+class Admin::ArticlesController < Admin::BaseController
+end
+
+The model generator creates Factory Girl factories instead of fixtures:
+
+./script/generate model product title:string price:integer
+
+This command generates the factory:
+
+Factory.define :product do |f|
+  f.title { "MyString" }
+  f.price { 1 }
+end
+
+TODO
+====
+
+Create a web app theme layout generator
+Create an authentication generator
+
+
+Copyright (c) 2009 Mike Enriquez, released under the MIT license

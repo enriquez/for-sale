@@ -1,0 +1,4 @@
+thoughtbot-paperclip --version 2.3.0 --source gems.github.com
+authlogic
+right_aws --version 1.10.0
+mime-types --version 1.16

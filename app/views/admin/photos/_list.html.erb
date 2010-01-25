@@ -1,0 +1,25 @@
+<% main_block "Photos", photo_items(parent), 0, false do %>
+<table class="table">
+	
+	<tr>
+		<th class="first">ID</th>
+		<th>Image</th>
+		<th>Description</th>
+		<th class="last">&nbsp;</th>
+	</tr>
+	
+	<% parent.photos.each do |photo| %>
+	<tr>
+		<td><%= photo.id.to_s %></td>
+		<td><%= image_tag photo.file.url(:small) %></td>
+		<td><%= photo.description %></td>
+		<td class="last">
+			<%= link_to "Edit", polymorphic_path([:admin, parent, photo], :action => :edit) %> |
+			<%= link_to "Delete", polymorphic_path([:admin, parent, photo]), :method => :delete %>
+		</td>
+	</tr>
+	<% end %>
+	
+</table>
+
+<% end %>

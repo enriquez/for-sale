@@ -1,0 +1,29 @@
+development:
+  config_login: admin
+  config_password: password
+  domain: localhost:3000
+  gmail_domain: gmail.com
+  gmail_username: username@gmail.com
+  gmail_password: password
+  email_recipient: username@gmail.com
+  
+production:
+  config_login: admin
+  config_password: password
+  domain: localhost:3000
+  gmail_domain: gmail.com
+  gmail_username: username@gmail.com
+  gmail_password: password
+  email_recipient: username@gmail.com
+  access_key_id: S3ACCESSKEYID
+  secret_access_key: S3SECRETACCESSKEY
+  s3_bucket: S3BUCKET
+  
+test:
+  config_login: admin
+  config_password: password
+  domain: localhost:3000
+  gmail_domain: gmail.com
+  gmail_username: username@gmail.com
+  gmail_password: password
+  email_recipient: username@gmail.com

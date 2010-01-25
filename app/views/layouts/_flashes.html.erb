@@ -1,0 +1,7 @@
+<% if flash.size > 0 %>
+	<div class="flash">
+	  <% flash.each do |key, value| -%>
+	    <div class="message <%= key %>"><p><%=h value %></p></div>
+	  <% end -%>
+	</div>
+<% end %>

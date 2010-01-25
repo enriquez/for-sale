@@ -1,0 +1,7 @@
+config/app_config.yml
+config/database.yml
+db/*.sqlite3
+tmp/**/*
+tmp/*
+log/*.log
+public/system/**

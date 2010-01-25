@@ -1,0 +1,7 @@
+SpanErrorMessages
+=================
+
+Forces Rails to use span tags instead of divs for errors.
+
+Credit to:
+http://jarrettcolby.com/articles/4-span-tags-for-error-message-on-in-ruby-on-rails

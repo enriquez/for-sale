@@ -1,0 +1,30 @@
+<% main_block("Users", navigation_items, 0) do %>
+
+	<% if @users.size > 0 %>
+
+	<table class="table">
+	
+		<tr>
+			<th class="first">Login</th>
+			<th class="last">&nbsp;</th>
+		</tr>
+	
+		<% @users.each do |user| %>
+		<tr>
+			<td><%= user.login %></td>
+			<td class="last">
+				<%= link_to 'Edit', edit_config_user_path(user) %> | 
+				<%= link_to 'Delete', config_user_path(user), :confirm => "Are you sure?", :method => :delete %>
+			</td>
+		</tr>
+		<% end %>
+	
+	</table>
+
+	<% else %>
+
+	<p>There are no users. <%= link_to "Click here to create one", new_config_user_path %>.</p>
+
+	<% end %>
+
+<% end %>

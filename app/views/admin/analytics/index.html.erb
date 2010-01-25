@@ -1,0 +1,102 @@
+<% content_for :javascripts do %>
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function(){
+			var points = [];
+			<% @analytics.top_visits.each do |visit| -%>
+			points.push([<%= DateTime.civil(visit.year.to_i, visit.month.to_i, visit.day.to_i).to_time.to_i * 1000 %>,<%= visit.visits %>]);
+			<% end -%>
+			
+			$.plot($("#visits-chart"), [points], {
+				xaxis: { mode: "time" },
+				lines: { show: true },
+				points: { show: true },
+				grid: { hoverable: true }
+			});
+			
+	    function showTooltip(x, y, contents) {
+	        $('<div id="tooltip">' + contents + '</div>').css( {
+	            position: 'absolute',
+	            display: 'none',
+	            top: y + 5,
+	            left: x + 5,
+	            border: '1px solid #fdd',
+	            padding: '2px',
+	            'background-color': '#fee',
+	            opacity: 0.80
+	        }).appendTo("body").fadeIn(200);
+	    }
+
+	    var previousPoint = null;
+	    $("#visits-chart").bind("plothover", function (event, pos, item) {
+	        $("#x").text(pos.x.toFixed(2));
+	        $("#y").text(pos.y.toFixed(2));
+
+					if (item) {
+					    if (previousPoint != item.datapoint) {
+					        previousPoint = item.datapoint;
+
+					        $("#tooltip").remove();
+					        var x = new Date(parseInt(item.datapoint[0].toFixed(0))),
+					            y = item.datapoint[1].toFixed(0);
+
+					        showTooltip(item.pageX, item.pageY,
+					                    (x.getUTCMonth() + 1) + "/" + x.getUTCDate() + "/" + x.getUTCFullYear() + "<br/>" + y + " visits");
+					    }
+					}
+					else {
+					    $("#tooltip").remove();
+					    previousPoint = null;            
+					}
+	    });
+
+		})
+	</script>
+<% end %>
+
+<% main_block "Analytics Summary", navigation_items, 0 do %>
+	<div id="visits-past-30-days">
+		<h3>Visits Over the Past 30 Days</h3>
+		<div id="visits-chart"></div>
+	</div>
+	<div id="site-usage" class="columns stats">
+		<h3>Site Usage</h3>
+		<ul class="column left">
+			<li><strong><%= @analytics.visits %></strong> Visits</li>
+			<li><strong><%= @analytics.page_views %></strong> Page Views</li>
+			<li><strong><%= @analytics.pages_per_visit %></strong> Pages / Visit</li>
+		</ul>
+		<ul class="column right">
+			<li><strong><%= @analytics.bounce_rate %>%</strong> Bounce Rate</li>
+			<li><strong><%= @analytics.avg_time_on_site %></strong> Avg. Time on Site</li>
+			<li><strong><%= @analytics.new_visits %>%</strong> New Visits</li>
+		</ul>
+	</div>
+	<div class="clear"></div>
+	<div id="top-pages" class="stats">
+		<h3>Top Pages</h3>
+		<ol>
+			<% @analytics.top_pages.each do |page| %>
+			<li><strong><%= link_to page.page_title, page.page_path %></strong> - <%= pluralize(page.pageviews, 'view') %></li>
+			<% end %>
+		</ol>
+	</div>
+	<div class="columns">
+		<div id="top-search-keywords" class="column left stats">
+			<h3>Top Search Keywords</h3>
+			<ol>
+				<% @analytics.top_search_keywords.each do |search_keyword| %>
+				<li><strong><%= search_keyword.keyword %></strong> - <%= pluralize(search_keyword.visits, 'visit') %></li>
+				<% end %>
+			</ol>
+		</div>
+		<div id="top-referrers" class="column right stats">
+			<h3>Top Referrers</h3>
+			<ol>
+				<% @analytics.top_referrers.each do |referrer| %>
+				<li><strong><%= referrer.source %></strong> - <%= pluralize(referrer.visits, 'visit') %></li>
+				<% end %>
+			</ol>
+		</div>
+	</div>
+	<div class="clear"></div>
+<% end %>

@@ -1,0 +1,19 @@
+<div class="block">
+  <div class="secondary-navigation">
+		<ul>
+			<% secondary_navigation.each do |link| %>
+			<li class="<%= link[:class] %>"><%= link_to link[:name], link[:path] %></li>
+			<% end %>
+		</ul>
+    <div class="clear"></div>
+  </div>
+	<div class="content">
+		<h2><%=h secondary_title %></h2>
+		<div class="inner">
+			<% if include_flashes %>
+			<%= render :partial => 'layouts/flashes' -%>
+			<% end %>
+			<%= body %>
+		</div>
+	</div>
+</div>

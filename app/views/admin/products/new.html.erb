@@ -1,0 +1,10 @@
+<% main_block "Create a Product", navigation_items, 1 do %>
+
+	<% form_for [:admin, @product], :html => { :class => "form" } do |product| %>
+		<%= validation_error_flash @product %>
+		<%= render :partial => "form", :locals => { :product => product } %>
+		<%= form_button product, :button_text => "Create", :cancel_path => admin_products_path %>
+	<% end %>
+
+<% end %>
+
